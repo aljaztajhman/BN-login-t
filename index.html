@@ -662,6 +662,77 @@ body {
 }
 .welcome-help-link:hover { color: var(--green-hover); }
 
+/* One-time password demo GIF (phone frame) */
+.otp-demo {
+    position: relative;
+    width: 150px;
+    aspect-ratio: 9 / 16;
+    margin: 14px 0 4px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #151617;
+    border: 4px solid #151617;
+    box-shadow: 0 6px 18px rgba(21, 22, 23, 0.22);
+}
+.otp-demo-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.72);
+    background: linear-gradient(160deg, #2b3a4d 0%, #151617 100%);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+.otp-demo-gif {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* "Show me how" trigger (button styled as the help link) */
+.welcome-demo-trigger {
+    background: none;
+    border: none;
+    padding: 4px 0 0;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Demo lightbox */
+.lightbox-backdrop { z-index: 150; }
+.demo-lightbox {
+    background: var(--white);
+    border-radius: var(--radius-card);
+    padding: 28px 28px 32px;
+    max-width: 340px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    animation: slideUp 0.22s ease-out;
+}
+.demo-lightbox-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-primary);
+    margin: 0 16px 20px;
+}
+.otp-demo--large {
+    width: 240px;
+    margin: 0 auto;
+}
+
 @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
@@ -917,7 +988,7 @@ body {
                 <div class="welcome-block-text">
                     <strong data-i18n="welcome.block1.title">If you use the mBank@Net mobile app</strong>
                     <p data-i18n-html="welcome.block1.body">Log in with your username and a <em>one-time password</em> generated in the app.</p>
-                    <a href="https://otpbanka.si/mobilni-zeton-pomoc" class="welcome-help-link" target="_blank" rel="noopener" data-i18n="welcome.help">Need help?</a>
+                    <button type="button" class="welcome-help-link welcome-demo-trigger" id="showDemoBtn" data-i18n="welcome.showme">Show me how</button>
                 </div>
             </div>
 
@@ -934,6 +1005,26 @@ body {
             </div>
 
             <button type="button" class="btn btn-primary welcome-cta" id="welcomeOk" data-i18n="welcome.cta">Got it</button>
+        </div>
+    </div>
+
+    <div class="modal-backdrop lightbox-backdrop" id="demoLightbox" hidden>
+        <div class="demo-lightbox" role="dialog" aria-modal="true" aria-labelledby="demoTitle">
+            <button class="modal-close" id="closeDemoLightbox" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h3 id="demoTitle" class="demo-lightbox-title" data-i18n="demo.title">How to generate your one-time password</h3>
+            <div class="otp-demo otp-demo--large">
+                <div class="otp-demo-placeholder">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="5" y="2" width="14" height="20" rx="2.5"/>
+                        <line x1="11" y1="18" x2="13" y2="18"/>
+                        <polygon points="10,8 16,11 10,14" fill="currentColor" stroke="none"/>
+                    </svg>
+                    <span data-i18n="welcome.demoLabel">One-time password demo</span>
+                </div>
+                <img src="otp-demo.gif" alt="Generating a one-time password in the mBank@Net app" class="otp-demo-gif" onerror="this.remove()">
+            </div>
         </div>
     </div>
 
@@ -999,7 +1090,9 @@ body {
             'welcome.sub': "For your security, we've updated how you sign in. Here's what's new:",
             'welcome.block1.title': 'If you use the mBank@Net mobile app',
             'welcome.block1.body': 'Log in with your username and a <em>one-time password</em> generated in the app.',
-            'welcome.help': 'Need help?',
+            'welcome.showme': 'Show me how',
+            'demo.title': 'How to generate your one-time password',
+            'welcome.demoLabel': 'One-time password demo',
             'welcome.block2.title': 'Not an mBank@Net user yet?',
             'welcome.block2.body': 'Choose <em>“Log in with SMS OTP”</em> below the LOG IN button to receive your code by text message.',
             'welcome.cta': 'Got it',
@@ -1042,7 +1135,9 @@ body {
             'welcome.sub': 'Zaradi vaše varnosti smo posodobili način prijave. Tu so novosti:',
             'welcome.block1.title': 'Če uporabljate mobilno aplikacijo mBank@Net',
             'welcome.block1.body': 'Prijavite se z uporabniškim imenom in <em>enkratnim geslom</em>, ki ga ustvarite v aplikaciji.',
-            'welcome.help': 'Potrebujete pomoč?',
+            'welcome.showme': 'Pokaži postopek',
+            'demo.title': 'Kako ustvarite enkratno geslo',
+            'welcome.demoLabel': 'Prikaz ustvarjanja enkratnega gesla',
             'welcome.block2.title': 'Niste še uporabnik mBank@Net?',
             'welcome.block2.body': 'Pod gumbom PRIJAVA izberite <em>„Prijava s SMS žetonom“</em> in prejeli boste kodo po SMS sporočilu.',
             'welcome.cta': 'Razumem',
@@ -1120,6 +1215,10 @@ body {
     const closeWelcomeBtn = document.getElementById('closeWelcome');
     const welcomeOkBtn = document.getElementById('welcomeOk');
 
+    const demoLightbox = document.getElementById('demoLightbox');
+    const showDemoBtn = document.getElementById('showDemoBtn');
+    const closeDemoBtn = document.getElementById('closeDemoLightbox');
+
     const mtErrorEl = document.getElementById('mtFormError');
     const mtErrorText = mtErrorEl ? mtErrorEl.querySelector('.form-error-text') : null;
 
@@ -1135,6 +1234,17 @@ body {
     if (welcomeModal) {
         welcomeModal.addEventListener('click', (e) => {
             if (e.target === welcomeModal) dismissWelcome();
+        });
+    }
+
+    // ---------- Demo lightbox ----------
+    function openDemo() { if (demoLightbox) demoLightbox.hidden = false; }
+    function closeDemo() { if (demoLightbox) demoLightbox.hidden = true; }
+    if (showDemoBtn) showDemoBtn.addEventListener('click', (e) => { e.preventDefault(); openDemo(); });
+    if (closeDemoBtn) closeDemoBtn.addEventListener('click', closeDemo);
+    if (demoLightbox) {
+        demoLightbox.addEventListener('click', (e) => {
+            if (e.target === demoLightbox) closeDemo();
         });
     }
 
@@ -1168,7 +1278,8 @@ body {
     });
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
-        if (welcomeModal && !welcomeModal.hidden) dismissWelcome();
+        if (demoLightbox && !demoLightbox.hidden) closeDemo();
+        else if (welcomeModal && !welcomeModal.hidden) dismissWelcome();
         else if (!passwordSmsModal.hidden) closeModal();
     });
 
