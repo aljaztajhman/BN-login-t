@@ -11,7 +11,6 @@
 :root {
     --green: #52AE30;
     --green-hover: #46992A;
-    --green-pressed: #3D8424;
     --blue: #1B82E3;
     --text-primary: #151617;
     --text-secondary: #7D828B;
@@ -377,18 +376,6 @@ body {
 }
 .btn-textlink:hover { color: var(--green); }
 
-.btn-quiet {
-    background: white;
-    color: var(--text-secondary);
-    border: 1px solid var(--bg-2);
-    margin-top: 8px;
-}
-.btn-quiet:hover {
-    color: var(--text-primary);
-    border-color: var(--text-disabled);
-    background: var(--bg-3);
-}
-
 .link-underline {
     color: var(--text-primary);
     font-size: 14px;
@@ -500,13 +487,6 @@ body {
 .promo-image:hover { filter: brightness(1.03); }
 
 .promo-caption { display: none; }
-
-.promo-caption {
-    padding: 14px 16px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
 
 .carousel-dots {
     display: flex;
@@ -732,6 +712,22 @@ body {
     width: 240px;
     margin: 0 auto;
 }
+.qr-lightbox-frame {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid var(--bg-2);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+}
+.qr-lightbox-img { width: 100%; height: 100%; display: block; }
+.qr-lightbox-hint {
+    margin: 16px 4px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
 
 @keyframes slideUp {
     from { transform: translateY(20px); opacity: 0; }
@@ -903,7 +899,7 @@ body {
                 <div class="divider"><span data-i18n="login.divider">Not using mBank@Net mobile application?</span></div>
 
                 <button type="button" class="btn-textlink" data-method="password-sms" data-i18n="login.smsotp">
-                    Log in with SMS OTP
+                    Other login methods
                 </button>
 
             </section>
@@ -911,19 +907,19 @@ body {
             <section class="card secondary-card">
                 <div class="secondary-row">
                     <div class="secondary-text">
-                        <strong data-i18n="sec.access.title">Don't have Bank@Net access yet?</strong>
-                        <span data-i18n="sec.access.body">Activate online in just a few minutes.</span>
-                    </div>
-                    <button type="button" class="btn btn-outline btn-compact" data-i18n="sec.access.cta">Activate</button>
-                </div>
-                <div class="secondary-row">
-                    <div class="secondary-text">
-                        <strong data-i18n="sec.mbank.title">Not mBank@Net user yet?</strong>
+                        <strong data-i18n="sec.mbank.title">Don't have the mBank@Net app yet?</strong>
                         <span data-i18n="sec.mbank.body">Scan the code to get the mobile app.</span>
                     </div>
                     <div class="mbank-qr" aria-label="mBank@net QR code">
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAyNSAyNScgc2hhcGUtcmVuZGVyaW5nPSdjcmlzcEVkZ2VzJyBmaWxsPSdibGFjayc+PHJlY3Qgd2lkdGg9JzI1JyBoZWlnaHQ9JzI1JyBmaWxsPSd3aGl0ZScvPjxyZWN0IHg9JzAnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxJyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMicgeT0nMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzMnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc0JyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNScgeT0nMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc5JyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTAnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMycgeT0nMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE1JyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTYnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE5JyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjAnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMScgeT0nMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIyJyB5PScwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjMnIHk9JzAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyNCcgeT0nMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzAnIHk9JzEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc2JyB5PScxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOCcgeT0nMScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEwJyB5PScxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTMnIHk9JzEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNScgeT0nMScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE4JyB5PScxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjQnIHk9JzEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMicgeT0nMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzMnIHk9JzInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc0JyB5PScyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzgnIHk9JzInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzExJyB5PScyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTYnIHk9JzInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIwJyB5PScyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjEnIHk9JzInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PScyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzInIHk9JzMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSczJyB5PSczJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNCcgeT0nMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzExJyB5PSczJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTgnIHk9JzMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIxJyB5PSczJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjInIHk9JzMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyNCcgeT0nMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzAnIHk9JzQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyJyB5PSc0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMycgeT0nNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzQnIHk9JzQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc2JyB5PSc0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOCcgeT0nNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEwJyB5PSc0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTEnIHk9JzQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMicgeT0nNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEzJyB5PSc0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTYnIHk9JzQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIwJyB5PSc0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjEnIHk9JzQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PSc0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzUnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc4JyB5PSc1JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOScgeT0nNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEwJyB5PSc1JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTEnIHk9JzUnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNCcgeT0nNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE1JyB5PSc1JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTYnIHk9JzUnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PSc1JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEnIHk9JzYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyJyB5PSc2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMycgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzQnIHk9JzYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc1JyB5PSc2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzgnIHk9JzYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEyJyB5PSc2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTQnIHk9JzYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNicgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE4JyB5PSc2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTknIHk9JzYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIxJyB5PSc2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjInIHk9JzYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMycgeT0nNicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PSc2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOCcgeT0nNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzknIHk9JzcnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEyJyB5PSc3JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTQnIHk9JzcnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSczJyB5PSc4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzcnIHk9JzgnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc4JyB5PSc4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOScgeT0nOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEwJyB5PSc4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTEnIHk9JzgnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNicgeT0nOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIzJyB5PSc4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjQnIHk9JzgnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxJyB5PSc5JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNCcgeT0nOScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzknIHk9JzknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMScgeT0nOScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEyJyB5PSc5JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTYnIHk9JzknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nOScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE5JyB5PSc5JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjEnIHk9JzknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nOScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIzJyB5PSc5JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc1JyB5PScxMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzEwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOCcgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMScgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMicgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMycgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNScgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNycgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nMTAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScxMScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEnIHk9JzExJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMycgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc0JyB5PScxMScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzUnIHk9JzExJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNycgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMScgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNScgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOScgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMScgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMycgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyNCcgeT0nMTEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScxMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzUnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nMTInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc3JyB5PScxMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzknIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTAnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTMnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTUnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTcnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTknIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjAnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjEnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjInIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjMnIHk9JzEyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyJyB5PScxMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzUnIHk9JzEzJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNycgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMCcgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMicgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNCcgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNScgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNycgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyNCcgeT0nMTMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScxNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzUnIHk9JzE0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nMTQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc3JyB5PScxNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEzJyB5PScxNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE0JyB5PScxNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PScxNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzInIHk9JzE1JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNScgeT0nMTUnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc5JyB5PScxNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEyJyB5PScxNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE3JyB5PScxNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIxJyB5PScxNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIyJyB5PScxNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIzJyB5PScxNScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzQnIHk9JzE2JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMicgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNCcgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNScgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNicgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNycgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOScgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMScgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMycgeT0nMTYnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc4JyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzExJyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEyJyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEzJyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE2JyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIwJyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIzJyB5PScxNycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzAnIHk9JzE4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMScgeT0nMTgnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzMnIHk9JzE4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNCcgeT0nMTgnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc1JyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzE4JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOCcgeT0nMTgnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc5JyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEwJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEyJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEzJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE1JyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE2JyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzE4JyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIwJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIyJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIzJyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PScxOCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzAnIHk9JzE5JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNicgeT0nMTknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNScgeT0nMTknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNicgeT0nMTknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nMTknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMScgeT0nMTknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyNCcgeT0nMTknIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScyMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzInIHk9JzIwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMycgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc0JyB5PScyMCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzIwJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOCcgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMicgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNicgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxNycgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOScgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMCcgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMScgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMycgeT0nMjAnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScyMScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzInIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMycgeT0nMjEnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc0JyB5PScyMScgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzYnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTQnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTUnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTYnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTcnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTgnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjAnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjQnIHk9JzIxJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nMjInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyJyB5PScyMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzMnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNCcgeT0nMjInIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc2JyB5PScyMicgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzknIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTQnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTcnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMTknIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjAnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjEnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjMnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMjQnIHk9JzIyJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMCcgeT0nMjMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc2JyB5PScyMycgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzgnIHk9JzIzJyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nOScgeT0nMjMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMScgeT0nMjMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxMycgeT0nMjMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScxOCcgeT0nMjMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScyMicgeT0nMjMnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PScwJyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzEnIHk9JzI0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nMicgeT0nMjQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSczJyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzQnIHk9JzI0JyB3aWR0aD0nMScgaGVpZ2h0PScxJy8+PHJlY3QgeD0nNScgeT0nMjQnIHdpZHRoPScxJyBoZWlnaHQ9JzEnLz48cmVjdCB4PSc2JyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzExJyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIwJyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIxJyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzIzJyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjxyZWN0IHg9JzI0JyB5PScyNCcgd2lkdGg9JzEnIGhlaWdodD0nMScvPjwvc3ZnPg==" alt="" aria-hidden="true">
                     </div>
+                </div>
+                <div class="secondary-row">
+                    <div class="secondary-text">
+                        <strong data-i18n="sec.access.title">New to OTP digital banking?</strong>
+                        <span data-i18n="sec.access.body">Activate your Bank@Net online access in just a few minutes.</span>
+                    </div>
+                    <button type="button" class="btn btn-outline btn-compact" data-i18n="sec.access.cta">Activate</button>
                 </div>
             </section>
         </div>
@@ -944,7 +940,7 @@ body {
             <a href="#" class="promo-image" aria-label="Register for digital banking"></a>
             <p class="promo-caption" data-i18n="right.caption">Register and become a digital banking user in just 1 minute.</p>
 
-            <div class="carousel-dots" role="tablist">
+            <div class="carousel-dots" aria-hidden="true">
                 <span class="dot active"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
@@ -1000,7 +996,8 @@ body {
                 </div>
                 <div class="welcome-block-text">
                     <strong data-i18n="welcome.block2.title">Not an mBank@Net user yet?</strong>
-                    <p data-i18n-html="welcome.block2.body">Choose <em>“Log in with SMS OTP”</em> below the LOG IN button to receive your code by text message.</p>
+                    <p data-i18n-html="welcome.block2.body">Choose <em>“Other login methods”</em> below the LOG IN button to log in with an SMS code.</p>
+                    <button type="button" class="welcome-help-link welcome-demo-trigger" id="showQrBtn" data-i18n="welcome.getapp">Get mBank@Net now</button>
                 </div>
             </div>
 
@@ -1025,6 +1022,19 @@ body {
                 </div>
                 <img src="otp-demo.gif" alt="Generating a one-time password in the mBank@Net app" class="otp-demo-gif" onerror="this.remove()">
             </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop lightbox-backdrop" id="qrLightbox" hidden>
+        <div class="demo-lightbox" role="dialog" aria-modal="true" aria-labelledby="qrLightboxTitle">
+            <button class="modal-close" id="closeQrLightbox" aria-label="Close">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <h3 id="qrLightboxTitle" class="demo-lightbox-title" data-i18n="qr.title">Get the mBank@Net app</h3>
+            <div class="qr-lightbox-frame">
+                <img id="qrLightboxImg" alt="mBank@Net app QR code" class="qr-lightbox-img">
+            </div>
+            <p class="qr-lightbox-hint" data-i18n="qr.hint">Scan the code with your phone camera to download the app.</p>
         </div>
     </div>
 
@@ -1077,11 +1087,11 @@ body {
             'login.forgot': 'Forgot username or password?',
             'login.submit': 'Log in',
             'login.divider': 'Not using mBank@Net mobile application?',
-            'login.smsotp': 'Log in with SMS OTP',
-            'sec.access.title': "Don't have Bank@Net access yet?",
-            'sec.access.body': 'Activate online in just a few minutes.',
+            'login.smsotp': 'Other login methods',
+            'sec.access.title': 'New to OTP digital banking?',
+            'sec.access.body': 'Activate your Bank@Net online access in just a few minutes.',
             'sec.access.cta': 'Activate',
-            'sec.mbank.title': 'Not mBank@Net user yet?',
+            'sec.mbank.title': "Don't have the mBank@Net app yet?",
             'sec.mbank.body': 'Scan the code to get the mobile app.',
             'right.caption': 'Register and become a digital banking user in just 1 minute.',
             'right.safe': 'Safe online banking.',
@@ -1093,8 +1103,11 @@ body {
             'welcome.showme': 'Show me how',
             'demo.title': 'How to generate your one-time password',
             'welcome.demoLabel': 'One-time password demo',
+            'welcome.getapp': 'Get mBank@Net now',
+            'qr.title': 'Get the mBank@Net app',
+            'qr.hint': 'Scan the code with your phone camera to download the app.',
             'welcome.block2.title': 'Not an mBank@Net user yet?',
-            'welcome.block2.body': 'Choose <em>“Log in with SMS OTP”</em> below the LOG IN button to receive your code by text message.',
+            'welcome.block2.body': 'Choose <em>“Other login methods”</em> below the LOG IN button to log in with an SMS code.',
             'welcome.cta': 'Got it',
             'psm.badge': 'Password + SMS',
             'psm.title': 'Log in with password',
@@ -1109,7 +1122,7 @@ body {
             'msg.fillBoth': 'Please fill in both Username and Mobile token one-time password.',
             'msg.tokenLen': 'Mobile token one-time password must be at least 6 digits.',
             'msg.loginOk': 'Logging in with Mobile token…',
-            'msg.loginError': 'Error logging in. Please check your username and mobile token one-time password. If you’re not a mBank@Net user, log in via “Log in with SMS OTP” below.',
+            'msg.loginError': 'Error logging in. Please check your username and mobile token one-time password. If you’re not a mBank@Net user, log in via “Other login methods” below.',
             'msg.psm.fill': 'Please fill in Username and Password.',
             'msg.psm.sent': 'SMS code sent. Check your phone.'
         },
@@ -1122,11 +1135,11 @@ body {
             'login.forgot': 'Pozabljeno uporabniško ime ali geslo?',
             'login.submit': 'Prijava',
             'login.divider': 'Ne uporabljate mobilne aplikacije mBank@Net?',
-            'login.smsotp': 'Prijava s SMS žetonom',
-            'sec.access.title': 'Še nimate dostopa do Bank@Net?',
-            'sec.access.body': 'Aktivirajte se v nekaj minutah.',
+            'login.smsotp': 'Drugi načini prijave',
+            'sec.access.title': 'Novi v digitalnem bančništvu OTP?',
+            'sec.access.body': 'Aktivirajte spletni dostop Bank@Net v nekaj minutah.',
             'sec.access.cta': 'Aktiviraj',
-            'sec.mbank.title': 'Niste še uporabnik mBank@Net?',
+            'sec.mbank.title': 'Še nimate aplikacije mBank@Net?',
             'sec.mbank.body': 'Skenirajte kodo in pričnite uporabljati mBank@Net.',
             'right.caption': 'Registrirajte se in postanite uporabnik digitalne banke v le 1 minuti.',
             'right.safe': 'Varno spletno bančništvo.',
@@ -1138,8 +1151,11 @@ body {
             'welcome.showme': 'Pokaži postopek',
             'demo.title': 'Kako ustvarite enkratno geslo',
             'welcome.demoLabel': 'Prikaz ustvarjanja enkratnega gesla',
+            'welcome.getapp': 'Pridobite mBank@Net zdaj',
+            'qr.title': 'Prenesite aplikacijo mBank@Net',
+            'qr.hint': 'Skenirajte kodo s kamero telefona za prenos aplikacije.',
             'welcome.block2.title': 'Niste še uporabnik mBank@Net?',
-            'welcome.block2.body': 'Pod gumbom PRIJAVA izberite <em>„Prijava s SMS žetonom“</em> in prejeli boste kodo po SMS sporočilu.',
+            'welcome.block2.body': 'Pod gumbom PRIJAVA izberite <em>„Drugi načini prijave“</em> in se prijavite s SMS kodo.',
             'welcome.cta': 'Razumem',
             'psm.badge': 'Geslo + SMS',
             'psm.title': 'Prijava z geslom',
@@ -1154,7 +1170,7 @@ body {
             'msg.fillBoth': 'Vnesite uporabniško ime in enkratno geslo mobilnega žetona.',
             'msg.tokenLen': 'Enkratno geslo mobilnega žetona mora imeti vsaj 6 številk.',
             'msg.loginOk': 'Prijavljanje z mobilnim žetonom…',
-            'msg.loginError': 'Napaka pri prijavi. Preverite uporabniško ime in enkratno geslo mobilnega žetona. Če niste uporabnik mBank@Net, se prijavite z gumbom „Prijava s SMS žetonom“ spodaj.',
+            'msg.loginError': 'Napaka pri prijavi. Preverite uporabniško ime in enkratno geslo mobilnega žetona. Če niste uporabnik mBank@Net, se prijavite z gumbom „Drugi načini prijave“ spodaj.',
             'msg.psm.fill': 'Vnesite uporabniško ime in geslo.',
             'msg.psm.sent': 'SMS koda je bila poslana. Preverite telefon.'
         }
@@ -1219,6 +1235,13 @@ body {
     const showDemoBtn = document.getElementById('showDemoBtn');
     const closeDemoBtn = document.getElementById('closeDemoLightbox');
 
+    const qrLightbox = document.getElementById('qrLightbox');
+    const showQrBtn = document.getElementById('showQrBtn');
+    const closeQrBtn = document.getElementById('closeQrLightbox');
+    const qrLightboxImg = document.getElementById('qrLightboxImg');
+    const appQrImg = document.querySelector('.mbank-qr img');
+    if (appQrImg && qrLightboxImg) qrLightboxImg.src = appQrImg.src;
+
     const mtErrorEl = document.getElementById('mtFormError');
     const mtErrorText = mtErrorEl ? mtErrorEl.querySelector('.form-error-text') : null;
 
@@ -1245,6 +1268,17 @@ body {
     if (demoLightbox) {
         demoLightbox.addEventListener('click', (e) => {
             if (e.target === demoLightbox) closeDemo();
+        });
+    }
+
+    // ---------- QR lightbox (Get the app) ----------
+    function openQr() { if (qrLightbox) qrLightbox.hidden = false; }
+    function closeQr() { if (qrLightbox) qrLightbox.hidden = true; }
+    if (showQrBtn) showQrBtn.addEventListener('click', (e) => { e.preventDefault(); openQr(); });
+    if (closeQrBtn) closeQrBtn.addEventListener('click', closeQr);
+    if (qrLightbox) {
+        qrLightbox.addEventListener('click', (e) => {
+            if (e.target === qrLightbox) closeQr();
         });
     }
 
@@ -1279,6 +1313,7 @@ body {
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
         if (demoLightbox && !demoLightbox.hidden) closeDemo();
+        else if (qrLightbox && !qrLightbox.hidden) closeQr();
         else if (welcomeModal && !welcomeModal.hidden) dismissWelcome();
         else if (!passwordSmsModal.hidden) closeModal();
     });
