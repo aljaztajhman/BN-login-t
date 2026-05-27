@@ -1494,6 +1494,13 @@ body:not(.ready) { visibility: hidden; }
     }
     if (closeWelcomeBtn) closeWelcomeBtn.addEventListener('click', dismissWelcome);
     if (welcomeOkBtn) welcomeOkBtn.addEventListener('click', dismissWelcome);
+    const helpBtn = document.querySelector('.help-btn');
+    if (helpBtn && welcomeModal) helpBtn.addEventListener('click', () => {
+        const confirmRow = document.querySelector('.welcome-confirm');
+        if (confirmRow) confirmRow.style.display = 'none';
+        if (welcomeOkBtn) welcomeOkBtn.disabled = false;
+        welcomeModal.hidden = false;
+    });
     const welcomeConfirm = document.getElementById('welcomeConfirm');
     if (welcomeConfirm && welcomeOkBtn) {
         welcomeConfirm.addEventListener('change', () => {
